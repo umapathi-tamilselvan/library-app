@@ -37,36 +37,48 @@
             <!-- Top navigation bar -->
             <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="/home/admin">Admin Dashboard</a>
+                    <a class="navbar-brand" href="#">Admin Dashboard</a>
 
                 </div>
             </nav>
+
             <div class="container bg-light sidebar shadow-sm">
-                        <h2 class="text-center">Add book</h2>
-                        <form action="/admin/book" method="POST">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="book_name" class="form-label">Book Name</label>
-                                <input type="text" class="form-control" id="book_name" name="book_name" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="content" class="form-label">Content</label>
-                                <input type="text" class="form-control" id="content" name="content" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="total_copies" class="form-label">Total Copies</label>
-                                <input type="text" class="form-control" id="total_copies" name="total_copies" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="available_copies" class="form-label">Available Copies</label>
-                                <input type="text" class="form-control" id="available_copies" name="available_copies" required>
-                            </div>
+            <form method="POST" action="#">
+            @csrf
 
-                            <button type="submit" class="btn btn-primary">Add Book</button>
-                        </form>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">Contact Form</h4>
+                    </div>
+                    <div class="card-body">
+                        <!-- Name Input -->
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                        </div>
 
+                        <!-- Email Input -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+            </div>
 
 
 

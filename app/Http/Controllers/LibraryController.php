@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Book;
 use App\Models\User;
 use App\Models\Consumer;
-use App\Models\Book;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class LibraryController extends Controller
 {
@@ -41,5 +42,21 @@ class LibraryController extends Controller
     $books=Book::create($data);
     $books->save();
     return redirect('/admin/book')->with('success','');
+  }
+  public function showuser(){
+    return view('admin.createuser');
+  }
+  public function adduser(Request $request){
+    $request->validate([
+       'name' => 'required',
+    'email' => 'required|email|unique:users',
+    'password' => 'required|min:8',
+    ]);
+    $user = new User();
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->password = Hash::make($request->password);
+    $user->save();
+    return redirect('/admin/view')->with('success','');
   }
 }

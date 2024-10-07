@@ -29,6 +29,8 @@ Route::middleware(['is_admin'])->group(function () {
     Route::get('/admin/book',[LibraryController::class,'viewbook']);
     Route::get('/admin/book/create',[LibraryController::class,'create']);
     Route::post('/admin/book',[LibraryController::class,'store']);
+    Route::get('/admin/user/create',[LibraryController::class,'showuser']);
+    Route::post('/admin/user/create',[LibraryController::class,'adduser']);
 });
 
 Route::get('/home', [LibrarianController::class, 'index'])->name('home');
