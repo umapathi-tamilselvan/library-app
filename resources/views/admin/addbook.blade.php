@@ -54,7 +54,7 @@
                     @endif
                     <div class="container">
                         <h2 class="text-center">Add book</h2>
-                        <form action="/home/book" method="POST">
+                        <form action="/admin/book" method="POST">
                             @csrf
                             <div class="mb-3">
                                 <label for="book_name" class="form-label">Book Name</label>

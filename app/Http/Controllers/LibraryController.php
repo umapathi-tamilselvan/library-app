@@ -18,7 +18,7 @@ class LibraryController extends Controller
     return view('admin.librarianview',compact('librarians'));
   }
   public function show(){
-    
+
     $consumers=Consumer::get();
     return view('admin.consumerview',compact('consumers'));
   }
@@ -40,6 +40,6 @@ class LibraryController extends Controller
     ]);
     $books=Book::create($data);
     $books->save();
-    return redirect('/home/book')->with('success','');
+    return redirect('/admin/book')->with('success','');
   }
 }

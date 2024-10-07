@@ -2,55 +2,44 @@
 
 @section('content')
 
-<div class="container">
+<!-- Font Awesome for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+<div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+        <!-- Dashboard Title -->
+        <div class="col-md-12 mb-4">
+            <h1 class="text-center display-4">Dashboard</h1>
+        </div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    <div class="container">
-                        <a href="/home/consumer/create" class="btn btn-primary">Create Counsumer</a>
+        <!-- Cards for Actions -->
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-user-plus fa-3x mb-3"></i>
+                    <h4 class="card-title">Borrower</h4>
+                    <a href="/home/consumer" class="btn btn-primary">Go to Borrower</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <i class="fas fa-book fa-3x mb-3"></i>
+                    <h4 class="card-title">Manage Books</h4>
+                    <a href="/home/books/manage" class="btn btn-primary">Go to Manage Books</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Consumers Table -->
+
                     </div>
-                    <div class="container">
-                        <a href="#" class="btn btn-primary mt-2">Add Book</a>
-                        <div class="container mt-5">
-                            <h2 class="text-center">Consumers</h2>
-                            <div class="table-responsive">
-                              <table class="table table-striped table-bordered">
-                                <thead class="table-dark">
-                                  <tr>
-                                    <th>S.No</th>
-                                    <th>Consumer Name</th>
-                                    <th>Membership ID</th>
-
-                                  </tr>
-                                </thead>
-                               @foreach ($consumers as $consumer )
-
-                                <tbody>
-                                  <tr >
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td><a href="#">{{$consumer->name}}</a></td>
-                                    <td>{{$consumer->membership_id}}</td>
-                                  </tr>
-
-                                </tbody>
-
-                               @endforeach
-                              </table>
-                            </div>
-                          </div>
-
-
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 @endsection

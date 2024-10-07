@@ -53,7 +53,7 @@
                     @endif
                     <div class="container">
                         <h2 class="text-center">Books</h2>
-                        <a href="/home/book/create" class="btn btn-primary btn-lg">Add Book</a>
+                        <a href="/admin/book/create" class="btn btn-primary btn-lg">Add Book</a>
                         <div class="table-responsive mt-4">
                             <table class="table table-striped table-bordered">
                               <thead class="table-dark">

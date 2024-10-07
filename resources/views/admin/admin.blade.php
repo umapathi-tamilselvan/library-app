@@ -72,9 +72,9 @@
                         <p class="text-muted mb-4">Here you can manage consumers, books, and settings.</p>
                         <hr>
                         <div class="d-flex justify-content-center gap-3 mt-4">
-                            <a href="/home/consumer" class="btn btn-primary btn-lg px-4">Consumer</a>
-                            <a href="/home/book" class="btn btn-secondary btn-lg px-4">Manage Books</a>
-                            <a href="/user/view" class="btn btn-warning btn-lg px-4">Manage Users</a>
+                            <a href="/admin/consumer" class="btn btn-primary btn-lg px-4">Consumer</a>
+                            <a href="/admin/book" class="btn btn-secondary btn-lg px-4">Manage Books</a>
+                            <a href="/admin/view" class="btn btn-warning btn-lg px-4">Manage Users</a>
                         </div>
                     </div>
                 </div>
