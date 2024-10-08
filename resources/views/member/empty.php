@@ -13,12 +13,12 @@
                 <h5 class="sidebar-heading px-3 mb-1 text-muted">Member Menu</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('/home') ? 'active' : '' }}" href="/home">
+                        <a class="nav-link {{ request()->is('/home') ? 'active' : '' }}" href="/member/dashboard">
                             <i class="fas fa-tachometer-alt"></i> Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('member/borrowed-books') ? 'active' : '' }}" href="/home/borrow">
+                        <a class="nav-link {{ request()->is('member/borrowed-books') ? 'active' : '' }}" href="/member/borrowed-books">
                             <i class="fas fa-book-reader"></i> Borrow Books
                         </a>
                     </li>
@@ -29,7 +29,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('member/profile') ? 'active' : '' }}" href="/home/books">
+                        <a class="nav-link {{ request()->is('member/profile') ? 'active' : '' }}" href="/member/profile">
                             <i class="fas fa-user"></i> Books
                         </a>
                     </li>

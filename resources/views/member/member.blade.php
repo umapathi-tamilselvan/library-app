@@ -43,56 +43,16 @@
             </div>
         </nav>
 
-        <!-- Main content -->
+       <!-- Main content -->
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <!-- Top navigation bar -->
             <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="/member/dashboard">Member Dashboard</a>
+                    <a class="navbar-brand" href="/home">Member Dashboard</a>
                 </div>
             </nav>
 
-            <!-- Cards for Member Actions -->
-            <div class="row">
-                <div class="col-md-6 mt-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body text-center">
-                            <i class="fas fa-book-reader fa-3x mb-3"></i>
-                            <h4 class="card-title"> Borrow Books</h4>
-                            <a href="/home/borrow" class="btn btn-primary">View Borrowed Books</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 mt-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body text-center">
-                            <i class="fas fa-history fa-3x mb-3"></i>
-                            <h4 class="card-title">Borrowing History</h4>
-                            <a href="/member/borrowing-history" class="btn btn-primary">View Borrowing History</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 mt-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body text-center">
-                            <i class="fas fa-history fa-3x mb-3"></i>
-                            <h4 class="card-title"> Books</h4>
-                            <a href="/home/books" class="btn btn-primary">View Books</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 mt-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body text-center">
-                            <i class="fas fa-user fa-3x mb-3"></i>
-                            <h4 class="card-title">Profile</h4>
-                            <a href="/member/profile" class="btn btn-primary">Go to Profile</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @yield('content1')<!-- Cards for Member Actions -->
 
         </main>
     </div>

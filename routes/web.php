@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\ConsumerController;
 use App\Http\Controllers\LibrarianController;
+use App\Http\Controllers\MemberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,5 +34,7 @@ Route::middleware(['is_admin'])->group(function () {
     Route::post('/admin/librarian',[LibraryController::class,'storelibrarian']);
 });
 
-Route::get('/home', [LibrarianController::class, 'index'])->name('home');
+Route::get('/home', [MemberController::class, 'index'])->name('home');
+Route::get('/home/books',[MemberController::class,'bookview']);
+Route::get('/home/borrow',[MemberController::class,'borrowview']);
 
