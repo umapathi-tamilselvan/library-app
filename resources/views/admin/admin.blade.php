@@ -14,8 +14,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('admin/consumer') ? 'active' : '' }}" href="/admin/consumer">
-                            <i class="bi bi-people"></i> Consumers
+                        <a class="nav-link {{ request()->is('admin/member') ? 'active' : '' }}" href="/admin/member">
+                            <i class="bi bi-people"></i> Member
                         </a>
                     </li>
                     <li class="nav-item">
@@ -24,8 +24,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('admin/view') ? 'active' : '' }}" href="/admin/view">
-                            <i class="bi bi-person"></i> Manage Users
+                        <a class="nav-link {{ request()->is('admin/librarian') ? 'active' : '' }}" href="/admin/librarian">
+                            <i class="bi bi-person"></i> Manage Librarians
                         </a>
                     </li>
                 </ul>
@@ -49,9 +49,9 @@
                     <div class="card shadow-sm" style="background: linear-gradient(120deg, #26a0a8, #3b4858);">
                         <div class="card-body text-white">
                             <i class="bi bi-person-plus-fill display-5"></i>
-                            <h5 class="card-title mt-3">Consumers</h5>
-                            <p class="card-text">Manage all users and consumers.</p>
-                            <a href="/admin/consumer" class="btn btn-outline-light">View Consumers</a>
+                            <h5 class="card-title mt-3">Members</h5>
+                            <p class="card-text">Manage all users and members.</p>
+                            <a href="/admin/member" class="btn btn-outline-light">View Members</a>
                         </div>
                     </div>
                 </div>
@@ -68,14 +68,14 @@
                     </div>
                 </div>
 
-               
+
                 <div class="col-lg-4 col-md-6">
                     <div class="card shadow-sm" style="background: linear-gradient(120deg, #0f853a, #679bb4);">
                         <div class="card-body text-white">
                             <i class="bi bi-person-fill display-5"></i>
-                            <h5 class="card-title mt-3">Manage Users</h5>
-                            <p class="card-text">Add, edit, and manage users.</p>
-                            <a href="/admin/view" class="btn btn-outline-light">Manage Users</a>
+                            <h5 class="card-title mt-3">Manage Librarians</h5>
+                            <p class="card-text">Add, edit, and manage librarian.</p>
+                            <a href="/admin/librarian" class="btn btn-outline-light">Manage Librarian</a>
                         </div>
                     </div>
                 </div>

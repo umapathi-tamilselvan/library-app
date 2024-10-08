@@ -14,8 +14,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('admin/consumer') ? 'active' : '' }}" href="/admin/consumer">
-                            <i class="bi bi-people"></i> Consumers
+                        <a class="nav-link {{ request()->is('admin/member') ? 'active' : '' }}" href="/admin/member">
+                            <i class="bi bi-people"></i> Member
                         </a>
                     </li>
                     <li class="nav-item">
@@ -24,8 +24,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('admin/view') ? 'active' : '' }}" href="/admin/view">
-                            <i class="bi bi-person"></i> Manage Users
+                        <a class="nav-link {{ request()->is('admin/librarian') ? 'active' : '' }}" href="/admin/librarian">
+                            <i class="bi bi-person"></i> Manage Librarians
                         </a>
                     </li>
                 </ul>
@@ -43,7 +43,7 @@
 
             <!-- Registration Form -->
             <div class="container bg-light sidebar shadow-sm">
-                <form method="POST" action="/admin/user/create">
+                <form method="POST" action="/admin/librarian">
                     @csrf
 
                     <div class="container mt-5">
@@ -68,8 +68,8 @@
 
                                         <!-- Password Input -->
                                         <div class="mb-3">
-                                            <label for="password" class="form-label">Password</label>
-                                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter a secure password" required>
+                                            <label for="phone" class="form-label">Phone</label>
+                                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter a phone number" required>
                                         </div>
 
                                         <!-- Submit Button -->

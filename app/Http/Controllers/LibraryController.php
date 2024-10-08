@@ -4,31 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\User;
-use App\Models\Consumer;
+use App\Models\Member;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
+use App\Models\Librarian;
+
 
 class LibraryController extends Controller
 {
   public function index(){
     return view('admin.admin');
   }
-  public function view(){
-    $librarians=User::get();
-    return view('admin.librarianview',compact('librarians'));
-  }
-  public function show(){
 
-    $consumers=Consumer::get();
-    return view('admin.consumerview',compact('consumers'));
-  }
   public function viewbook(){
-     $books=Book::get();
-    return view('admin.book',compact('books'));
-  }
-
-  public function create(){
+    $books=Book::get();
+   return view('admin.book',compact('books'));
+ }
+ public function createbook(){
     return view('admin.addbook');
   }
 
@@ -43,20 +36,26 @@ class LibraryController extends Controller
     $books->save();
     return redirect('/admin/book')->with('success','');
   }
-  public function showuser(){
-    return view('admin.createuser');
-  }
-  public function adduser(Request $request){
-    $request->validate([
-       'name' => 'required',
-    'email' => 'required|email|unique:users',
-    'password' => 'required|min:8',
+public function viewmember(){
+    $members=Member::get();
+    return view('admin.memberview',compact('members'));
+}
+public function librarianview(){
+    $librarians=Librarian::get();
+    return view('admin.librarianview',compact('librarians'));
+}
+
+public function librariancreate(){
+    return view('admin.createlibrarian');
+}
+public function storelibrarian(){
+    $data=request()->validate([
+        'name'=>'required',
+        'email'=>'required',
+        'phone'=>'required'
     ]);
-    $user = new User();
-    $user->name = $request->name;
-    $user->email = $request->email;
-    $user->password = Hash::make($request->password);
-    $user->save();
-    return redirect('/admin/view')->with('success','');
-  }
+    $librarians=Librarian::create($data);
+    $librarians->save();
+    return redirect('/admin/librarian')->with('success','');
+}
 }

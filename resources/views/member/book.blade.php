@@ -37,54 +37,41 @@
             <!-- Top navigation bar -->
             <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Admin Dashboard</a>
-
+                    <a class="navbar-brand" href="/home/admin">Admin Dashboard</a>
                 </div>
             </nav>
 
-            <div class="container bg-light sidebar shadow-sm">
-            <form method="POST" action="#">
-            @csrf
+            <div class="card mt-0">
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card shadow-sm">
-                    <div class="card-header bg-primary text-white">
-                        <h4 class="mb-0">Contact Form</h4>
+                    <h2 class="text-center">Books</h2>
+                    <a href="/admin/book/create" class="btn btn-primary btn-lg mb-4">Add Book</a>
+
+                    <div class="row">
+                        @foreach ($books as $book)
+                            <div class="col-md-4 mb-4">
+                                <div class="card shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $book->book_name }}</h5>
+                                        <p class="card-text">{{ $book->content }}</p>
+                                        <p class="card-text"><strong>Total Copies:</strong> {{ $book->total_copies }}</p>
+                                        <p class="card-text"><strong>Available Copies:</strong> {{ $book->available_books }}</p>
+                                        <a href="#" class="btn btn-primary">View Details</a> <!-- You can link this to a book details page -->
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
-                    <div class="card-body">
-                        <!-- Name Input -->
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
-                        </div>
 
-                        <!-- Email Input -->
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
-                        </div>
-
-                        <!-- Submit Button -->
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</form>
-
-
-            </div>
-
-
 
         </main>
     </div>
 </div>
 @endsection
-
-

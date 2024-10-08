@@ -17,8 +17,8 @@ class CreateBooksTable extends Migration
             $table->id();
             $table->string('book_name');
             $table->string('content');
-            $table->integer('total_copies');
-            $table->integer('available_copies');
+            $table->integer('total_copies')->default(1);
+            $table->integer('available_copies')->default(1);
             $table->timestamps();
         });
     }

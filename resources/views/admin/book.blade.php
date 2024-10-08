@@ -14,8 +14,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('admin/consumer') ? 'active' : '' }}" href="/admin/consumer">
-                            <i class="bi bi-people"></i> Consumers
+                        <a class="nav-link {{ request()->is('admin/member') ? 'active' : '' }}" href="/admin/member">
+                            <i class="bi bi-people"></i> Member
                         </a>
                     </li>
                     <li class="nav-item">
@@ -24,8 +24,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('admin/view') ? 'active' : '' }}" href="/admin/view">
-                            <i class="bi bi-person"></i> Manage Users
+                        <a class="nav-link {{ request()->is('admin/librarian') ? 'active' : '' }}" href="/admin/librarian">
+                            <i class="bi bi-person"></i> Manage Librarians
                         </a>
                     </li>
                 </ul>
@@ -38,50 +38,36 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="/home/admin">Admin Dashboard</a>
-
                 </div>
             </nav>
 
             <div class="card mt-0">
-
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
-                    <div class="container d-md-block bg-light sidebar shadow-sm">
-                        <h2 class="text-center">Books</h2>
-                        <a href="/admin/book/create" class="btn btn-primary btn-lg">Add Book</a>
-                        <div class="table-responsive mt-4">
-                            <table class="table table-striped table-bordered">
-                              <thead class="table-dark">
-                                <tr>
-                                  <th>S.No</th>
-                                  <th>Book name</th>
-                                  <th>Content</th>
-                                  <th>Total Copies</th>
-                                  <th>Available Copies</th>
 
-                                </tr>
-                              </thead>
-                             @foreach ($books as $book )
+                    <h2 class="text-center">Books</h2>
+                    <a href="/admin/book/create" class="btn btn-primary btn-lg mb-4">Add Book</a>
 
-                              <tbody>
-                                <tr >
-                                  <td>{{ $loop->iteration }}</td>
-                                  <td>{{$book->book_name}}</td>
-                                  <td>{{$book->content}}</td>
-                                  <td>{{$book->total_copies}}</td>
-                                  <td>{{$book->available_copies}}</td>
-                                </tr>
-
-                              </tbody>
-
-                             @endforeach
-                            </table>
-
+                    <div class="row">
+                        @foreach ($books as $book)
+                            <div class="col-md-4 mb-4">
+                                <div class="card shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $book->book_name }}</h5>
+                                        <p class="card-text">{{ $book->content }}</p>
+                                        <p class="card-text"><strong>Total Copies:</strong> {{ $book->total_copies }}</p>
+                                        <p class="card-text"><strong>Available Copies:</strong> {{ $book->available_copies }}</p>
+                                        <a href="#" class="btn btn-primary">View Details</a> <!-- You can link this to a book details page -->
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
+
                 </div>
             </div>
 
@@ -89,5 +75,3 @@
     </div>
 </div>
 @endsection
-
-

@@ -14,8 +14,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('admin/consumer') ? 'active' : '' }}" href="/admin/consumer">
-                            <i class="bi bi-people"></i> Consumers
+                        <a class="nav-link {{ request()->is('admin/member') ? 'active' : '' }}" href="/admin/member">
+                            <i class="bi bi-people"></i> Member
                         </a>
                     </li>
                     <li class="nav-item">
@@ -24,8 +24,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('admin/view') ? 'active' : '' }}" href="/admin/view">
-                            <i class="bi bi-person"></i> Manage Users
+                        <a class="nav-link {{ request()->is('admin/librarian') ? 'active' : '' }}" href="/admin/librarian">
+                            <i class="bi bi-person"></i> Manage Librarians
                         </a>
                     </li>
                 </ul>
