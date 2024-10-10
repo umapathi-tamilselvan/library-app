@@ -8,6 +8,7 @@ use App\Models\Member;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\BorrowedRecord;
 use App\Models\Librarian;
 
 
@@ -57,5 +58,9 @@ public function storelibrarian(){
     $librarians=Librarian::create($data);
     $librarians->save();
     return redirect('/admin/librarian')->with('success','');
+}
+public function viewhistroy(){
+    $borrowedRecords=BorrowedRecord::all();
+    return view('admin.borrowedhistory',compact('borrowedRecords'));
 }
 }
