@@ -15,10 +15,8 @@ class CreateLibrariesTable extends Migration
     {
         Schema::create('libraries', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('librarian_id');
-            $table->foreignId('book_id');
-            $table->foreignId('member_id');
-
+            $table->string('name');
+            $table->string('Location');
             $table->timestamps();
         });
     }

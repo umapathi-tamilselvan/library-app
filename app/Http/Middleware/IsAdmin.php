@@ -18,11 +18,10 @@ class IsAdmin
     public function handle(Request $request, Closure $next)
     {
 
-        if (Auth::check() && Auth::user()->is_admin) {
-            return $next($request);
+        if (auth()->user()->role !== 'admin') {
+            return redirect('/home'); // Redirect if not admin
         }
-
-        return redirect('/home');
+        return $next($request);
     }
 
 }

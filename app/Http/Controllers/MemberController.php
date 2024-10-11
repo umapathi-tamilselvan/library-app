@@ -38,7 +38,7 @@ class MemberController extends Controller
             'borrowed_at' => 'nullable|date',
             'due_date' => 'nullable|date|after:borrowed_at',
             'returned_at' => 'nullable|date|after:due_date',
-            
+
         ]);
 
         $data['user_id'] = auth()->user()->id;
@@ -57,10 +57,9 @@ class MemberController extends Controller
     }
     public function show()
     {
-        // Get the current logged-in user ID
+      
         $userId = auth()->user()->id;
 
-        // Fetch borrow history for the logged-in user
         $borrowedRecords = BorrowedRecord::where('user_id', $userId)->get();
 
         return view('member.borrowhistory', compact('borrowedRecords'));

@@ -14,16 +14,5 @@ class book extends Model
 {
     use HasFactory;
     protected $guarded=[];
-    public function member(){
-        return $this->hasMany(Member::class);
-    }
-    public function borrowedrecord(){
-        return $this->hasMany(BorrowedRecord::class);
-    }
-    public function library(){
-        return $this->belongsTo(Library::class);
-    }
-    public function librarian(){
-        return $this->belongsTo(Librarian::class);
-    }
+    
 }
