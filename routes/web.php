@@ -23,7 +23,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::middleware(['admin'])->group(function () {
+Route::middleware(['is_admin'])->group(function () {
     Route::get('/home/admin', [LibraryController::class, 'index'])->name('home.admin');
     Route::get('/admin/book',[LibraryController::class,'viewbook']);
     Route::get('/admin/book/create',[LibraryController::class,'createbook']);

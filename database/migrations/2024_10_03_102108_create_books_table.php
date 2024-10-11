@@ -17,7 +17,7 @@ class CreateBooksTable extends Migration
             $table->id();
             $table->string('book_name');
             $table->string('content');
-            $table->foreignId('library_id')->constrained('libraries')->onDelete('cascade');
+            $table->foreignId('library_id')->constrained();
             $table->integer('total_copies')->default(1);
             $table->integer('available_copies')->default(1);
             $table->timestamps();

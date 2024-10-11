@@ -28,10 +28,11 @@ class AppServiceProvider extends ServiceProvider
     {
 
         User::created(function ($user) {
-            Member::create([
+            User::create([
                 'name'=>$user->name,
                 'email'=>$user->email,
-                
+
+
             ]
             );
     });
