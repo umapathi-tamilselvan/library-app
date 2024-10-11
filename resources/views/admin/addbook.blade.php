@@ -53,6 +53,20 @@
                                 <label for="content" class="form-label">Content</label>
                                 <input type="text" class="form-control" id="content" name="content" required>
                             </div>
+                            <div class="form-group">
+                                <label for="library_id">Library</label>
+                                <select name="library_id" id="library_id" class="form-control" required>
+                                    <option value="">Select a Library</option>
+                                    @foreach($libraries as $library)
+                                        <option value="{{ $library->id }}" {{ old('library_id') == $library->id ? 'selected' : '' }}>
+                                            {{ $library->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('library_id')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
                             <div class="mb-3">
                                 <label for="total_copies" class="form-label">Total Copies</label>
                                 <input type="text" class="form-control" id="total_copies" name="total_copies" required>
