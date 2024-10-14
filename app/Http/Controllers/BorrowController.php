@@ -44,11 +44,11 @@ class BorrowController extends Controller
         return redirect('/home')->with('success', 'Book borrowed successfully!');
     }
 
-    
+
     public function returnBook($userId, $bookId, Request $request)
     {
-        $user = User::findOrFail($userId);
-        $book = Book::findOrFail($bookId);
+        $user = User::find($userId);
+        $book = Book::find($bookId);
 
         $borrowRecord = $user->borrowedBooks()->where('book_id', $bookId)->first();
 
