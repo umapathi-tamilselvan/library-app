@@ -56,33 +56,32 @@
             <div class="container d-md-block bg-light sidebar shadow-sm">
                 <h2 class="text-center">Borrow History</h2>
                 <div class="table-responsive">
+                    @if($borrowHistorys->isNotEmpty())
                     <table class="table table-striped table-bordered">
                         <thead class="table-dark">
-                            <tr>
-                                <th>S.No</th>
-                                <th>Librarian</th>
-                                <th>Book</th>
-                                <th>Borrowed At</th>
-                                <th>Due Date</th>
-                                <th>Returned At</th>
-                                <th>Status</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($borrowedRecords as $borrowedRecord)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $borrowedRecord->librarian_id }}</td>
-                                    <td>{{ $borrowedRecord->book_id }}</td>
-                                    <td>{{ $borrowedRecord->borrowed_at }}</td>
-                                    <td>{{ $borrowedRecord->due_date }}</td>
-                                    <td>{{ $borrowedRecord->returned_at }}</td>
-                                    <td> {{ \Carbon\Carbon::now() >  $borrowedRecord->due_date  && empty($borrowedRecord->returned_at)  ? 'Not Returned' : 'Returned'}}</td>
-
-                                </tr>
-                            @endforeach
-                        </tbody>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>Book Name</th>
+                                        <th>Borrowed Date</th>
+                                        <th>Due Date</th>
+                                        <th>Returned Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($borrowHistorys as $borrowedBook)
+                                        <tr>
+                                            <td>{{$loop->iteration}}</td>
+                                            <td>{{ $borrowedBook->book_name }}</td>
+                                            <td>{{ $borrowedBook->pivot->borrowed_at }}</td>
+                                            <td>{{ $borrowedBook->pivot->due_date }}</td>
+                                            <td>{{ $borrowedBook->pivot->returned_at ?? 'Not returned yet' }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @else
+                            <p>No borrowing history found.</p>
+                        @endif
                     </table>
                 </div>
 

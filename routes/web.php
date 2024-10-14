@@ -39,7 +39,7 @@ Route::get('/home/borrow',[UserController::class,'borrowview']);
 
 
 Route::post('/home', [BorrowController::class, 'store'])->name('borrow.store');
-
+Route::get('/home/borrowhistory',[BorrowController::class,'index']);
 
 
 

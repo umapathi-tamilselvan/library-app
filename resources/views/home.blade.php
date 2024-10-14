@@ -29,7 +29,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('member/borrowing-history') ? 'active' : '' }}" href="/member/borrowing-history">
+                        <a class="nav-link {{ request()->is('member/borrowing-history') ? 'active' : '' }}" href="/home/borrowhistory">
                             <i class="fas fa-history"></i> Borrowing History
                         </a>
                     </li>
@@ -74,7 +74,7 @@
                         <div class="card-body text-center">
                             <i class="fas fa-history fa-3x mb-3"></i>
                             <h4 class="card-title">Borrowing History</h4>
-                            <a href="/member/borrowing-history" class="btn btn-primary">View Borrowing History</a>
+                            <a href="/home/borrowhistory" class="btn btn-primary">View Borrowing History</a>
                         </div>
                     </div>
                 </div>

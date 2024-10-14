@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 
 class BorrowController extends Controller
 {
+    public function index()
+    {
+        $borrowHistorys = auth()->user()->borrowedBooks;
+        return view('member.borrowhistory', compact('borrowHistorys'));
+    }
+
+
+
     public function store(Request $request)
     {
 
@@ -30,5 +38,6 @@ class BorrowController extends Controller
         ]);
         return redirect('/home')->with('success', 'Book borrowed successfully!');
     }
+
 
 }
