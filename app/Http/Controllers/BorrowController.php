@@ -43,6 +43,8 @@ class BorrowController extends Controller
         ]);
         return redirect('/home')->with('success', 'Book borrowed successfully!');
     }
+
+    
     public function returnBook($userId, $bookId, Request $request)
     {
         $user = User::findOrFail($userId);

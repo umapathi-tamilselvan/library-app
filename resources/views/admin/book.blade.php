@@ -1,6 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
+
+@if (session('success'))
+    <div id="autoHideAlert" class="alert alert-success alert-dismissible fade show fixed-alert" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
+@if (session('delete'))
+    <div id="autoHideAlert" class="alert alert-success alert-dismissible fade show fixed-alert" role="alert">
+        {{ session('delete') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
 <div class="container-fluid">
     <div class="row">
 

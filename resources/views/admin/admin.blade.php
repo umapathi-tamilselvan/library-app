@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+@if (session('status'))
+    <div id="autoHideAlert" class="alert alert-success alert-dismissible fade show fixed-alert" role="alert">
+        {{ session('status') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
 <div class="container-fluid">
     <div class="row">
 
@@ -34,7 +40,7 @@
 
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-         
+
             <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="/home/admin">Admin Dashboard</a>
