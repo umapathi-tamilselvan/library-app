@@ -17,6 +17,13 @@ class BookController extends Controller
         return view('admin.addbook',compact('libraries'));
       }
 
+    public function destroy($id){
+      $book = Book::findOrFail($id);
+      $book->delete();
+
+    return redirect()->back()->with('success', 'Book deleted successfully!');
+      }
+
       public function store(){
         $data=request()->validate([
          'book_name'=>'required',
@@ -28,6 +35,6 @@ class BookController extends Controller
         $libraries = Library::all();
         $books=Book::create($data);
         $books->save();
-        return redirect('/admin/book')->with('success','');
+        return redirect('/book')->with('success','');
       }
 }

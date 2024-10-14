@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
-        <!-- Sidebar -->
+
         <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar shadow-sm">
             <div class="position-sticky pt-3">
                 <h5 class="sidebar-heading px-3 mb-1 text-muted">Admin Menu</h5>
@@ -14,36 +14,37 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('admin/member') ? 'active' : '' }}" href="/admin/member">
-                            <i class="bi bi-people"></i> Member
+                        <a class="nav-link {{ request()->is('admin/member') ? 'active' : '' }}" href="/user">
+                            <i class="bi bi-people"></i> Users
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('admin/book') ? 'active' : '' }}" href="/admin/book">
+                        <a class="nav-link {{ request()->is('admin/book') ? 'active' : '' }}" href="/book">
                             <i class="bi bi-book"></i> Manage Books
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('admin/librarian') ? 'active' : '' }}" href="/admin/librarian">
-                            <i class="bi bi-person"></i> Manage Librarians
+                        <a class="nav-link {{ request()->is('admin/librarian') ? 'active' : '' }}" href="/borrowhistory">
+                            <i class="bi bi-person"></i> Borrow History
                         </a>
                     </li>
                 </ul>
             </div>
         </nav>
 
-        <!-- Main content -->
+
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <!-- Top navigation bar -->
+
             <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="/home/admin">Admin Dashboard</a>
 
                 </div>
             </nav>
+
             <div class="container bg-light sidebar shadow-sm">
                         <h2 class="text-center">Add book</h2>
-                        <form action="/admin/book" method="POST">
+                        <form action="/book" method="POST">
                             @csrf
                             <div class="mb-3">
                                 <label for="book_name" class="form-label">Book Name</label>

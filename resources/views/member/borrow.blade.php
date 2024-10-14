@@ -4,6 +4,11 @@
 
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 
 <div class="container-fluid mt-5">
     <div class="row">
@@ -18,27 +23,23 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('member/borrowed-books') ? 'active' : '' }}" href="/home/borrow">
+                        <a class="nav-link {{ request()->is('member/borrowed-books') ? 'active' : '' }}" href="/borrow">
                             <i class="fas fa-book-reader"></i> Borrow Books
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('member/borrowing-history') ? 'active' : '' }}" href="/member/borrowing-history">
+                        <a class="nav-link {{ request()->is('member/borrowing-history') ? 'active' : '' }}" href="/borrowhistory">
                             <i class="fas fa-history"></i> Borrowing History
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('member/profile') ? 'active' : '' }}" href="/home/books">
+                        <a class="nav-link {{ request()->is('member/profile') ? 'active' : '' }}" href="/books">
                             <i class="fas fa-user"></i> Books
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('member/profile') ? 'active' : '' }}" href="/member/profile">
-                            <i class="fas fa-user"></i> Profile
-                        </a>
-                    </li>
+
                 </ul>
             </div>
         </nav>
@@ -48,7 +49,7 @@
 
             <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="/home">Member Dashboard</a>
+                    <a class="navbar-brand" href="/home">User Dashboard</a>
                 </div>
             </nav>
             <div class="card-body">
@@ -63,7 +64,7 @@
                             @endforeach
                         </select>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="user_name">User</label>
                         <input type="text" class="form-control" value="{{ auth()->user()->name }}" readonly>

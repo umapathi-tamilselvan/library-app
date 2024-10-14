@@ -26,20 +26,27 @@ Route::get('/', function () {
 Auth::routes();
 Route::middleware(['is_admin'])->group(function () {
     Route::get('/home/admin', [LibraryController::class, 'index'])->name('home.admin');
-    Route::get('/admin/member',[LibraryController::class,'viewmember']);
-    Route::get('/admin/book',[BookController::class,'viewbook']);
-    Route::get('/admin/book/create',[BookController::class,'createbook']);
-    Route::post('/admin/book',[BookController::class,'store']);
+    Route::get('/user',[LibraryController::class,'user']);
+    Route::get('/borrowhistory',[LibraryController::class,'borrow']);
+    Route::post('/borrowhistory/return', [BorrowController::class, 'returnBook'])->name('return.book');
+
+
+    Route::get('/book',[BookController::class,'viewbook']);
+    Route::get('/book/create',[BookController::class,'createbook']);
+    Route::post('/book',[BookController::class,'store']);
+    Route::delete('/book/delete/{id}', [BookController::class, 'destroy'])->name('book.delete');
+
+
 });
 
 Route::get('/home', [UserController::class, 'index'])->name('home');
-Route::get('/home/books',[UserController::class,'bookview']);
-Route::get('/home/borrow',[UserController::class,'borrowview']);
+Route::get('/books',[UserController::class,'bookview']);
+Route::get('/borrow',[UserController::class,'borrowview']);
 
 
 
-Route::post('/home', [BorrowController::class, 'store'])->name('borrow.store');
-Route::get('/home/borrowhistory',[BorrowController::class,'index']);
+Route::post('/borrow', [BorrowController::class, 'store'])->name('borrow.store');
+Route::get('/borrowhistory',[BorrowController::class,'index']);
 
 
 
