@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class BorrowedBooks extends Migration
+class CreateBorrowedBooksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,17 @@ class BorrowedBooks extends Migration
      */
     public function up()
     {
-        Schema::create("borrowed_books", function (Blueprint $table) {
+        Schema::create('borrowed_books', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('book_id')->constrained()->onDelete('cascade');
-            $table->timestamp('borrowed_at')->nullable();
-            $table->timestamp('returned_at')->nullable();
+            $table->date('borrowed_at')->nullable();
+            $table->date('due_date')->nullable();
+            $table->date('returned_at')->nullable();
             $table->timestamps();
-    });
+        });
     }
+
     /**
      * Reverse the migrations.
      *

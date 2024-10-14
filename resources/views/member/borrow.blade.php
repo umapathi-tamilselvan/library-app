@@ -52,19 +52,9 @@
                 </div>
             </nav>
             <div class="card-body">
-                <form action="/save-library" method="POST">
+                <form action="{{ route('borrow.store') }}"  method="POST">
                     @csrf
-                    <!-- Librarian Selection -->
-                    <div class="mb-3">
-                        <label for="librarian_id" class="form-label">Librarian</label>
-                        <select name="librarian_id" class="form-select">
-                            @foreach ($librarians as $librarian)
-                                <option value="{{ $librarian->id }}">{{ $librarian->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
 
-                    <!-- Book Selection -->
                     <div class="mb-3">
                         <label for="book_id" class="form-label">Book</label>
                         <select name="book_id" class="form-select">
@@ -73,19 +63,21 @@
                             @endforeach
                         </select>
                     </div>
-
-                    <!-- Member ID (auto-filled with current user's ID or name) -->
+                    
                     <div class="form-group">
-                        <label for="member_id">Member</label>
-                        <input type="text" class="form-control" id="member_id" name="member_id" value="{{ auth()->user()->name }}" readonly>
-                       
-                        <!-- <input type="hidden" id="member_id" name="member_id" value="{{ auth()->user()->id }}"> -->
+                        <label for="user_name">User</label>
+                        <input type="text" class="form-control" value="{{ auth()->user()->name }}" readonly>
                     </div>
+
+                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
 
 
                     <div class="form-group">
                         <label for="borrowed_at">Borrow Date</label>
-                        <input type="date" class="form-control" id="borrowed_at" name="borrowed_at" required>
+                        <input type="date" class="form-control @error('borrowed_at') is-invalid @enderror" id="borrowed_at" name="borrowed_at" required>
+                        @error('borrowed_at')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
 
 

@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Book;
-use App\Models\Member;
-use App\Models\Librarian;
+use App\Models\User;
 use Illuminate\Http\Request;
-use App\Models\BorrowedRecord;
 
-class MemberController extends Controller
+class UserController extends Controller
 {
- public function __construct(){
+    public function __construct(){
 
         $this->middleware('auth');
     }
@@ -25,46 +24,11 @@ class MemberController extends Controller
     }
     public function borrowview(){
         $books=Book::get();
-        $librarians=Librarian::get();
 
-        return view('member.borrow',compact('books','librarians'));
+        return view('member.borrow',compact('books'));
     }
-    public function store() {
-
-        $data = request()->validate([
-            'member_id' => 'required|exists:members,id',
-            'librarian_id' => 'required|exists:librarians,id',
-            'book_id' => 'required|exists:books,id',
-            'borrowed_at' => 'nullable|date',
-            'due_date' => 'nullable|date|after:borrowed_at',
-            'returned_at' => 'nullable|date|after:due_date',
-
-        ]);
-
-        $data['user_id'] = auth()->user()->id;
-        $borrowedRecord = BorrowedRecord::create($data);
-
-        $books = Book::find($data['book_id']);
-
-        if ($books && $books->available_copies > 0) {
-            $books->available_copies -= 1;
-            $books->save();
-        } else {
-            return redirect('/home')->back()->with('error', 'No available copies for this book.');
-        }
-
-        return redirect('/home')->with('success', 'Book borrowed successfully and available copies reduced.');
-    }
-    public function show()
-    {
-      
-        $userId = auth()->user()->id;
-
-        $borrowedRecords = BorrowedRecord::where('user_id', $userId)->get();
-
-        return view('member.borrowhistory', compact('borrowedRecords'));
-    }
-
-
+   
 
 }
+
+

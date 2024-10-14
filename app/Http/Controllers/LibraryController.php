@@ -18,6 +18,9 @@ class LibraryController extends Controller
     return view('admin.admin');
   }
 
-  
+public function viewmember(){
+    $members=User::get();
+    return view('admin.memberview',compact('members'));
+}
 
 }

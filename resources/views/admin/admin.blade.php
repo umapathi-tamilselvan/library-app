@@ -49,8 +49,8 @@
                     <div class="card shadow-sm" style="background: linear-gradient(120deg, #26a0a8, #3b4858);">
                         <div class="card-body text-white">
                             <i class="bi bi-person-plus-fill display-5"></i>
-                            <h5 class="card-title mt-3">Members</h5>
-                            <p class="card-text">Manage all users and members.</p>
+                            <h5 class="card-title mt-3">Users</h5>
+                            <p class="card-text">Manage all users.</p>
                             <a href="/admin/member" class="btn btn-outline-light">View Members</a>
                         </div>
                     </div>
@@ -69,16 +69,6 @@
                 </div>
 
 
-                <div class="col-lg-4 col-md-6">
-                    <div class="card shadow-sm" style="background: linear-gradient(120deg, #0f853a, #679bb4);">
-                        <div class="card-body text-white">
-                            <i class="bi bi-person-fill display-5"></i>
-                            <h5 class="card-title mt-3">Manage Librarians</h5>
-                            <p class="card-text">Add, edit, and manage librarian.</p>
-                            <a href="/admin/librarian" class="btn btn-outline-light">Manage Librarian</a>
-                        </div>
-                    </div>
-                </div>
             </div>
 
         </main>

@@ -31,9 +31,8 @@ class AppServiceProvider extends ServiceProvider
             User::create([
                 'name'=>$user->name,
                 'email'=>$user->email,
-
-
-            ]
+                'password'=>$user->password,
+   ]
             );
     });
     }
