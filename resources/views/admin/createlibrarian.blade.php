@@ -42,10 +42,8 @@
                 </div>
             </nav>
 
-
-            <!-- Registration Form -->
             <div class="container bg-light sidebar shadow-sm">
-                <form method="POST" action="/admin/librarian">
+                 <form method="POST" action="/admin/librarian">
                     @csrf
 
                     <div class="container mt-5">
