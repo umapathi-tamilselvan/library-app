@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Models\Book;
-use App\Models\User;
 use App\Models\Borrow;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-
 
 class BorrowController extends Controller
 {
@@ -15,7 +13,8 @@ class BorrowController extends Controller
     {
 
         $borrowHistorys = Borrow::where('user_id', auth()->id())->get();
-    return view('member.borrowhistory', compact('borrowHistorys'));
+
+        return view('member.borrowhistory', compact('borrowHistorys'));
     }
 
     public function store(Request $request)
@@ -27,9 +26,7 @@ class BorrowController extends Controller
             'due_date' => 'required|date',
         ]);
 
-
         $book = Book::find($request->book_id);
-
 
         if ($book->available_copies <= 0) {
             return back()->withErrors(['error' => 'Sorry, this book is currently unavailable.']);
@@ -37,7 +34,6 @@ class BorrowController extends Controller
 
         $book->available_copies -= 1;
         $book->save();
-
 
         Borrow::create([
             'user_id' => auth()->id(),
@@ -50,29 +46,22 @@ class BorrowController extends Controller
         return redirect('/home')->with('success', 'Book borrowed successfully!');
     }
 
-    public function returnBook( Request $request)
-{
+    public function returnBook(Request $request)
+    {
 
-    $borrowId = $request->input('borrow_id');
-    $borrow = Borrow::find($borrowId);
+        $borrowId = $request->input('borrow_id');
+        $borrow = Borrow::find($borrowId);
 
-    if (!$borrow || $borrow->returned_at) {
-        return redirect('/borrowedhistory')->withErrors(['error' => 'This book was either not borrowed or has already been returned.']);
+        if (! $borrow || $borrow->returned_at) {
+            return redirect('/borrowedhistory')->withErrors(['error' => 'This book was either not borrowed or has already been returned.']);
+        }
+
+        $borrow->update([
+            'returned_at' => $request->input('returned_at', Carbon::now()),
+        ]);
+
+        $borrow->book->increment('available_copies');
+
+        return redirect('/borrowedhistory')->with('success', 'Book returned successfully!');
     }
-
-
-    $borrow->update([
-        'returned_at' => $request->input('returned_at', Carbon::now()),
-    ]);
-
-
-    $borrow->book->increment('available_copies');
-
-    return redirect('/borrowedhistory')->with('success', 'Book returned successfully!');
-}
-
-
-
-
-
 }

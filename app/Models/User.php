@@ -2,14 +2,10 @@
 
 namespace App\Models;
 
-use App\Models\Book;
-use App\Models\Borrow;
-use App\Models\Library;
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -47,14 +43,17 @@ class User extends Authenticatable
     ];
 
     public function borrowedBooks()
-{
-    return $this->hasMany(Borrow::class);
-}
-   public function book(){
-    return $this->hasMany(Book::class);
-   }
+    {
+        return $this->hasMany(Borrow::class);
+    }
 
-    public function libraries() {
+    public function book()
+    {
+        return $this->hasMany(Book::class);
+    }
+
+    public function libraries()
+    {
         return $this->belongsToMany(Library::class);
     }
 }

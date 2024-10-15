@@ -1,11 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BorrowController;
 use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,27 +25,20 @@ Route::get('/', function () {
 Auth::routes();
 Route::middleware(['is_admin'])->group(function () {
     Route::get('/home/admin', [LibraryController::class, 'index'])->name('home.admin');
-    Route::get('/user',[LibraryController::class,'user']);
-    Route::get('/borrowedhistory',[LibraryController::class,'borrow']);
+    Route::get('/user', [LibraryController::class, 'user']);
+    Route::get('/borrowedhistory', [LibraryController::class, 'borrow']);
     Route::post('/borrowedhistory/return', [BorrowController::class, 'returnBook'])->name('return.book');
 
-
-    Route::get('/book',[BookController::class,'viewbook']);
-    Route::get('/book/create',[BookController::class,'createbook']);
-    Route::post('/book',[BookController::class,'store']);
+    Route::get('/book', [BookController::class, 'viewbook']);
+    Route::get('/book/create', [BookController::class, 'createbook']);
+    Route::post('/book', [BookController::class, 'store']);
     Route::delete('/book/delete/{id}', [BookController::class, 'destroy'])->name('book.delete');
-
 
 });
 
 Route::get('/home', [UserController::class, 'index'])->name('home');
-Route::get('/books',[UserController::class,'bookview']);
-Route::get('/borrow',[UserController::class,'borrowview']);
-
-
+Route::get('/books', [UserController::class, 'bookview']);
+Route::get('/borrow', [UserController::class, 'borrowview']);
 
 Route::post('/borrow', [BorrowController::class, 'store'])->name('borrow.store');
-Route::get('/borrowhistory',[BorrowController::class,'index']);
-
-
-
+Route::get('/borrowhistory', [BorrowController::class, 'index']);

@@ -2,22 +2,22 @@
 
 namespace App\Models;
 
-use App\Models\Book;
-use App\Models\User;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Library extends Model
 {
     use HasFactory;
-    protected $guarded=[];
 
-    public function books(){
+    protected $guarded = [];
+
+    public function books()
+    {
         return $this->hasMany(Book::class);
     }
-    public function user(){
+
+    public function user()
+    {
         return $this->belongsToMany(User::class);
     }
-
-
 }

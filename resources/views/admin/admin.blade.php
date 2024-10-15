@@ -7,9 +7,11 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif
+
 <div class="container-fluid">
     <div class="row">
 
+        <!-- Sidebar Menu -->
         <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar shadow-sm">
             <div class="position-sticky pt-3">
                 <h5 class="sidebar-heading px-3 mb-1 text-muted">Admin Menu</h5>
@@ -38,49 +40,51 @@
             </div>
         </nav>
 
-
+        <!-- Main Content Area -->
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
+            <!-- Navbar -->
             <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="/home/admin">Admin Dashboard</a>
-
                 </div>
             </nav>
 
-
+            <!-- Cards Section -->
             <div class="row g-4">
 
+                <!-- Users Card -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="card shadow-sm" style="background: linear-gradient(120deg, #26a0a8, #3b4858);">
-                        <div class="card-body text-white">
-                            <i class="bi bi-person-plus-fill display-5"></i>
-                            <h5 class="card-title mt-3">Users</h5>
-                            <p class="card-text">Manage all users.</p>
+                    <div class="card shadow-sm card-hover" style="background: linear-gradient(135deg, #2a5298, #1e3c72);">
+                        <div class="card-body text-white text-center">
+                            <i class="bi bi-person-plus-fill display-5 mb-3"></i>
+                            <h5 class="card-title">Users</h5>
+                            <p class="card-text">Manage all users registered on the platform.</p>
                             <a href="/user" class="btn btn-outline-light">View Members</a>
                         </div>
                     </div>
                 </div>
 
-
+                <!-- Manage Books Card -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="card shadow-sm" style="background: linear-gradient(120deg, #af50b9, #dd5769);">
-                        <div class="card-body text-white">
-                            <i class="bi bi-book-fill display-5"></i>
-                            <h5 class="card-title mt-3">Manage Books</h5>
-                            <p class="card-text">View and manage all books in the system.</p>
+                    <div class="card shadow-sm card-hover" style="background: linear-gradient(135deg, #b24592, #f15f79);">
+                        <div class="card-body text-white text-center">
+                            <i class="bi bi-book-fill display-5 mb-3"></i>
+                            <h5 class="card-title">Manage Books</h5>
+                            <p class="card-text">Oversee the library of books available in the system.</p>
                             <a href="/book" class="btn btn-outline-light">Manage Books</a>
                         </div>
                     </div>
                 </div>
 
+                <!-- Borrow History Card -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="card shadow-sm" style="background: linear-gradient(120deg, #af50b9, #dd5769);">
-                        <div class="card-body text-white">
-                            <i class="bi bi-book-fill display-5"></i>
-                            <h5 class="card-title mt-3">Borrow History</h5>
-                            <p class="card-text">View and manage all borrowers.</p>
-                            <a href="/borrowedhistory" class="btn btn-outline-light">Borrow History</a>
+                    <div class="card shadow-sm card-hover" style="background: linear-gradient(135deg, #1e3c72, #2a5298);">
+                        <div class="card-body text-white text-center">
+                            <i class="bi bi-clock-history display-5 mb-3"></i>
+                            <h5 class="card-title">Borrow History</h5>
+                            <p class="card-text">Track the borrowing history of users and books.</p>
+                            <a href="/borrowedhistory" class="btn btn-outline-light">View Borrow History</a>
                         </div>
                     </div>
                 </div>
@@ -90,6 +94,6 @@
         </main>
     </div>
 </div>
+
+
 @endsection
-
-

@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-
-
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
 @if (session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
@@ -27,7 +26,6 @@
                             <i class="fas fa-book-reader"></i> Borrow Books
                         </a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('member/borrowing-history') ? 'active' : '' }}" href="/borrowhistory">
                             <i class="fas fa-history"></i> Borrowing History
@@ -38,12 +36,9 @@
                             <i class="fas fa-user"></i> Books
                         </a>
                     </li>
-
-
                 </ul>
             </div>
         </nav>
-
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
@@ -54,31 +49,32 @@
             </nav>
 
             <div class="row">
-                <div class="col-md-6 mt-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body text-center">
-                            <i class="fas fa-book-reader fa-3x mb-3"></i>
-                            <h4 class="card-title"> Borrow Books</h4>
-                            <a href="/borrow" class="btn btn-primary">View Borrowed Books</a>
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-lg border-0 rounded-lg hover-shadow">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-book-reader fa-3x mb-3 text-primary"></i>
+                            <h4 class="card-title mb-3">Borrow Books</h4>
+                            <a href="/borrow" class="btn btn-primary btn-block">View Borrowed Books</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-6 mt-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body text-center">
-                            <i class="fas fa-history fa-3x mb-3"></i>
-                            <h4 class="card-title">Borrowing History</h4>
-                            <a href="/borrowhistory" class="btn btn-primary">View Borrowing History</a>
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-lg border-0 rounded-lg hover-shadow">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-history fa-3x mb-3 text-success"></i>
+                            <h4 class="card-title mb-3">Borrowing History</h4>
+                            <a href="/borrowhistory" class="btn btn-success btn-block">View Borrowing History</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 mt-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body text-center">
-                            <i class="fas fa-history fa-3x mb-3"></i>
-                            <h4 class="card-title"> Books</h4>
-                            <a href="/books" class="btn btn-primary">View Books</a>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-lg border-0 rounded-lg hover-shadow">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-book fa-3x mb-3 text-info"></i>
+                            <h4 class="card-title mb-3">Books</h4>
+                            <a href="/books" class="btn btn-info btn-block">View Books</a>
                         </div>
                     </div>
                 </div>

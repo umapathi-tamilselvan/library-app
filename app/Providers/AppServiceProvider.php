@@ -3,8 +3,6 @@
 namespace App\Providers;
 
 use App\Models\User;
-use App\Models\Member;
-use App\Models\Librarian;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -29,11 +27,11 @@ class AppServiceProvider extends ServiceProvider
 
         User::created(function ($user) {
             User::create([
-                'name'=>$user->name,
-                'email'=>$user->email,
-                'password'=>$user->password,
-   ]
+                'name' => $user->name,
+                'email' => $user->email,
+                'password' => $user->password,
+            ]
             );
-    });
+        });
     }
 }
