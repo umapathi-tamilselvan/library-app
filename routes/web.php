@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BorrowController;
-use App\Http\Controllers\UsersController;
 use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\UserController;
 
@@ -27,8 +26,8 @@ Auth::routes();
 Route::middleware(['is_admin'])->group(function () {
     Route::get('/home/admin', [LibraryController::class, 'index'])->name('home.admin');
     Route::get('/user',[LibraryController::class,'user']);
-    Route::get('/borrowhistory',[LibraryController::class,'borrow']);
-    Route::post('/borrowhistory/return', [BorrowController::class, 'returnBook'])->name('return.book');
+    Route::get('/borrowedhistory',[LibraryController::class,'borrow']);
+    Route::post('/borrowedhistory/return', [BorrowController::class, 'returnBook'])->name('return.book');
 
 
     Route::get('/book',[BookController::class,'viewbook']);

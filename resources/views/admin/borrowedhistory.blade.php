@@ -38,7 +38,6 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="/home/admin">Admin Dashboard</a>
-
                 </div>
             </nav>
 
@@ -74,31 +73,29 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($borrowHistorys as $user)
-                                    @foreach ($user->borrowedBooks as $book)
-                                        <tr>
-                                            <td>{{$loop->iteration}}</td>
-                                            <td>{{ $user->name }}</td>
-                                            <td>{{ $book->book_name }}</td>
-                                            <td>{{ $book->pivot->borrowed_at ? \Carbon\Carbon::parse($book->pivot->borrowed_at)->format('d-m-Y') : 'Not Borrowed' }}</td>
-                                            <td>{{ $book->pivot->due_date ? \Carbon\Carbon::parse($book->pivot->due_date)->format('d-m-Y') : 'Not Set' }}</td>
-                                            <td>{{ $book->pivot->returned_at ? \Carbon\Carbon::parse($book->pivot->returned_at)->format('d-m-Y') : 'Not Returned' }}</td>
+                                @foreach ($borrowHistorys as $borrow)
+                                    <tr>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{ $borrow->user->name }}</td>
+                                        <td>{{ $borrow->book->book_name }}</td>
+                                        <td>{{ $borrow->borrowed_at ? \Carbon\Carbon::parse($borrow->borrowed_at)->format('d-m-Y') : 'Not Borrowed' }}</td>
+                                        <td>{{ $borrow->due_date ? \Carbon\Carbon::parse($borrow->due_date)->format('d-m-Y') : 'Not Set' }}</td>
+                                        <td>{{ $borrow->returned_at ? \Carbon\Carbon::parse($borrow->returned_at)->format('d-m-Y') : 'Not Returned' }}</td>
 
-                                            <!-- Book return form -->
-                                            <td>
-                                                @if(!$book->pivot->returned_at)
-                                                    <form action="{{ route('return.book') }}" method="POST">
-                                                        @csrf
-                                                        <input type="date" name="returned_at" required>
-                                                        <button type="submit" class="btn btn-success">Return Book</button>
-                                                    </form>
-                                                @else
-                                                    <span class="badge bg-dark text-white">Returned</span>
-                                                @endif
-                                            </td>
+                                        <td>
+                                            @if(!$borrow->returned_at)
+                                                <form action="{{ route('return.book') }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="borrow_id" value="{{ $borrow->id }}">
+                                                    <input type="date" name="returned_at" required>
+                                                    <button type="submit" class="btn btn-success">Return Book</button>
+                                                </form>
+                                            @else
+                                                <span class="badge bg-dark text-white">Returned</span>
+                                            @endif
+                                        </td>
 
-                                        </tr>
-                                    @endforeach
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>

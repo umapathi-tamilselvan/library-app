@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Book;
+use App\Models\Borrow;
 use App\Models\Library;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -45,11 +46,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function borrowedBooks() {
-        return $this->belongsToMany(Book::class, 'borrowed_books')
-                    ->withTimestamps()
-                    ->withPivot('borrowed_at','due_date', 'returned_at');
-    }
+    public function borrowedBooks()
+{
+    return $this->hasMany(Borrow::class);
+}
+   public function book(){
+    return $this->hasMany(Book::class);
+   }
 
     public function libraries() {
         return $this->belongsToMany(Library::class);

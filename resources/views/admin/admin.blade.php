@@ -30,7 +30,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->is('admin/librarian') ? 'active' : '' }}" href="/borrowhistory">
+                        <a class="nav-link {{ request()->is('admin/librarian') ? 'active' : '' }}" href="/borrowedhistory">
                             <i class="bi bi-person"></i> Borrow History
                         </a>
                     </li>
@@ -80,7 +80,7 @@
                             <i class="bi bi-book-fill display-5"></i>
                             <h5 class="card-title mt-3">Borrow History</h5>
                             <p class="card-text">View and manage all borrowers.</p>
-                            <a href="/borrowhistory" class="btn btn-outline-light">Borrow History</a>
+                            <a href="/borrowedhistory" class="btn btn-outline-light">Borrow History</a>
                         </div>
                     </div>
                 </div>

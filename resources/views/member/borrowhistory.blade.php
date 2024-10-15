@@ -68,13 +68,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($borrowHistorys as $borrowedBook)
+                                    @foreach($borrowHistorys as $borrow)
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
-                                            <td>{{ $borrowedBook->book_name }}</td>
-                                            <td>{{ $borrowedBook->pivot->borrowed_at }}</td>
-                                            <td>{{ $borrowedBook->pivot->due_date }}</td>
-                                            <td>{{ $borrowedBook->pivot->returned_at ?? 'Not returned yet' }}</td>
+                                            <td>{{ $borrow->book->name }}</td>
+                                            <td>{{ $borrow->borrowed_at }}</td>
+                                            <td>{{ $borrow->due_date }}</td>
+                                            <td>{{ $borrow->returned_at ?? 'Not returned yet' }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

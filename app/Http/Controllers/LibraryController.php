@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 
+use App\Models\Borrow;
 use App\Http\Controllers\Controller;
 
 
@@ -20,7 +21,9 @@ public function user(){
     return view('admin.memberview',compact('members'));
 }
 public function borrow(){
-    $borrowHistorys = User::with('borrowedBooks')->get();
+    $borrowHistorys = Borrow::with(['user', 'book'])->get();
+
+
     return view('admin.borrowedhistory', compact('borrowHistorys'));
 }
 }
