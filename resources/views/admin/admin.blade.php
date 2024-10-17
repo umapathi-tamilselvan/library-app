@@ -19,25 +19,25 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->is('home/admin') ? 'active' : '' }}" href="/home/admin">
-                                <i class="bi bi-house-door"></i> Dashboard
+                    <ul class="nav nav-pills me-auto mb-2 mb-lg-0">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="/home/admin">
+                                <i class="bi bi-house-door "></i> Dashboard
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item ">
                             <a class="nav-link {{ request()->is('admin/member') ? 'active' : '' }}" href="/user">
-                                <i class="bi bi-people"></i> Users
+                                <i class="bi bi-house-door"></i> Users
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ request()->is('admin/book') ? 'active' : '' }}" href="/book">
-                                <i class="bi bi-book"></i> Manage Books
+                                <i class="bi bi-house-door"></i> Manage Books
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ request()->is('admin/librarian') ? 'active' : '' }}" href="/borrowedhistory">
-                                <i class="bi bi-clock-history"></i> Borrow History
+                                <i class="bi bi-house-door"></i> Borrow History
                             </a>
                         </li>
                     </ul>

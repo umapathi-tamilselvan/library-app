@@ -20,7 +20,7 @@ class UserController extends Controller
 
     public function bookview()
     {
-        $books = Book::get();
+        $books = Book::paginate(6);
 
         return view('member.book', compact('books'));
     }
