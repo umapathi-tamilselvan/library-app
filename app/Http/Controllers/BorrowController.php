@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Book;
 use App\Models\Borrow;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Mail\BorrowNotification;
+use App\Mail\ReturnNotification;
+use Illuminate\Support\Facades\Mail;
 
 class BorrowController extends Controller
 {
@@ -35,13 +38,14 @@ class BorrowController extends Controller
         $book->available_copies -= 1;
         $book->save();
 
-        Borrow::create([
+      $borrow=  Borrow::create([
             'user_id' => auth()->id(),
             'book_id' => $request->book_id,
             'borrowed_at' => $request->borrowed_at,
             'due_date' => $request->due_date,
             'returned_at' => null,
         ]);
+        Mail::to(auth()->user()->email)->send(new BorrowNotification($borrow));
 
         return redirect('/home')->with('success', 'Book borrowed successfully!');
     }
@@ -61,6 +65,7 @@ class BorrowController extends Controller
         ]);
 
         $borrow->book->increment('available_copies');
+        Mail::to($borrow->user->email)->send(new ReturnNotification($borrow));
 
         return redirect('/borrowedhistory')->with('success', 'Book returned successfully!');
     }

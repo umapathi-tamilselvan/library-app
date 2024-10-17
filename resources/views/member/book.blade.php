@@ -13,7 +13,7 @@
 <div class="container-fluid mt-5">
     <div class="row">
 
-        <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar shadow-sm">
+        <nav id="sidebar" class="card  col-md-3 col-lg-2 d-md-block bg-light sidebar shadow-sm">
             <div class="position-sticky pt-3">
                 <h5 class="sidebar-heading px-3 mb-1 text-muted">Member Menu</h5>
                 <ul class="nav flex-column">

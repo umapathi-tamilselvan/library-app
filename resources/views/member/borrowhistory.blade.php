@@ -13,7 +13,7 @@
 <div class="container-fluid mt-5">
     <div class="row">
 
-        <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar shadow-sm">
+        <nav id="sidebar" class="card  col-md-3 col-lg-2 d-md-block bg-light sidebar shadow-sm">
             <div class="position-sticky pt-3">
                 <h5 class="sidebar-heading px-3 mb-1 text-muted">Member Menu</h5>
                 <ul class="nav flex-column">
@@ -71,10 +71,10 @@
                                     @foreach($borrowHistorys as $borrow)
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
-                                            <td>{{ $borrow->book->name }}</td>
-                                            <td>{{ $borrow->borrowed_at }}</td>
-                                            <td>{{ $borrow->due_date }}</td>
-                                            <td>{{ $borrow->returned_at ?? 'Not returned yet' }}</td>
+                                            <td>{{ $borrow->book->book_name }}</td>
+                                            <td>{{ $borrow->borrowed_at ? \Carbon\Carbon::parse($borrow->borrowed_at)->format('d-m-Y') : 'Not Borrowed' }}</td>
+                                            <td>{{ $borrow->due_date ? \Carbon\Carbon::parse($borrow->due_date)->format('d-m-Y') : 'Not Set' }}</td>
+                                            <td>{{ $borrow->returned_at ? \Carbon\Carbon::parse($borrow->returned_at)->format('d-m-Y') : 'Not Returned' }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

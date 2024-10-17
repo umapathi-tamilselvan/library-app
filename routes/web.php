@@ -36,7 +36,7 @@ Route::middleware(['is_admin'])->group(function () {
 
 });
 
-Route::get('/home', [UserController::class, 'index'])->name('home');
+Route::get('/user', [UserController::class, 'index'])->name('home');
 Route::get('/books', [UserController::class, 'bookview']);
 Route::get('/borrow', [UserController::class, 'borrowview']);
 
