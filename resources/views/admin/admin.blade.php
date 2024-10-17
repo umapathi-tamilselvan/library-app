@@ -11,46 +11,42 @@
 <div class="container-fluid">
     <div class="row">
 
-        <!-- Sidebar Menu -->
-        <nav id="sidebar" class="card col-md-3 col-lg-2 d-md-block bg-light sidebar shadow-sm">
-            <div class="position-sticky pt-3">
-                <h5 class="sidebar-heading px-3 mb-1 text-muted">Admin Menu</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('home/admin') ? 'active' : '' }}" href="/home/admin">
-                            <i class="bi bi-house-door"></i> Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('admin/member') ? 'active' : '' }}" href="/user">
-                            <i class="bi bi-people"></i> Users
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('admin/book') ? 'active' : '' }}" href="/book">
-                            <i class="bi bi-book"></i> Manage Books
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('admin/librarian') ? 'active' : '' }}" href="/borrowedhistory">
-                            <i class="bi bi-person"></i> Borrow History
-                        </a>
-                    </li>
-                </ul>
+        <!-- Top Navbar with Sidebar Menu -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm w-100">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/home/admin">Admin Dashboard</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('home/admin') ? 'active' : '' }}" href="/home/admin">
+                                <i class="bi bi-house-door"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('admin/member') ? 'active' : '' }}" href="/user">
+                                <i class="bi bi-people"></i> Users
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('admin/book') ? 'active' : '' }}" href="/book">
+                                <i class="bi bi-book"></i> Manage Books
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('admin/librarian') ? 'active' : '' }}" href="/borrowedhistory">
+                                <i class="bi bi-clock-history"></i> Borrow History
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
 
-        <!-- Main Content Area -->
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
-            <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="/home/admin">Admin Dashboard</a>
-                </div>
-            </nav>
-
-            <!-- Cards Section -->
+        <!-- Cards Section -->
+        <main class="col-lg-12 px-md-4 mt-4">
             <div class="row g-4">
 
                 <!-- Users Card -->
@@ -90,10 +86,8 @@
                 </div>
 
             </div>
-
         </main>
     </div>
 </div>
-
 
 @endsection

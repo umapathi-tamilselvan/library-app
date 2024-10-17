@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\BookController;
-use App\Http\Controllers\BorrowController;
-use App\Http\Controllers\LibraryController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\BorrowController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\LibraryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,5 @@ Route::get('/borrow', [UserController::class, 'borrowview']);
 
 Route::post('/borrow', [BorrowController::class, 'store'])->name('borrow.store');
 Route::get('/borrowhistory', [BorrowController::class, 'index']);
+
+

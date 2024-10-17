@@ -1,17 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
-@if (session('success'))
+@if (session('status'))
     <div id="autoHideAlert" class="alert alert-success alert-dismissible fade show fixed-alert" role="alert">
-        {{ session('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
-
-@if (session('delete'))
-    <div id="autoHideAlert" class="alert alert-success alert-dismissible fade show fixed-alert" role="alert">
-        {{ session('delete') }}
+        {{ session('status') }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif
@@ -19,54 +11,42 @@
 <div class="container-fluid">
     <div class="row">
 
-        <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar shadow-sm">
-            <div class="position-sticky pt-3">
-                <h5 class="sidebar-heading px-3 mb-1 text-muted">Admin Menu</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('home/admin') ? 'active' : '' }}" href="/home/admin">
-                            <i class="bi bi-house-door"></i> Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('admin/member') ? 'active' : '' }}" href="/user">
-                            <i class="bi bi-people"></i> Users
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('admin/book') ? 'active' : '' }}" href="/book">
-                            <i class="bi bi-book"></i> Manage Books
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('admin/librarian') ? 'active' : '' }}" href="/borrowhistory">
-                            <i class="bi bi-person"></i> Borrow History
-                        </a>
-                    </li>
-                </ul>
+        <!-- Top Navbar with Sidebar Menu -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm w-100">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/home/admin">Admin Dashboard</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('home/admin') ? 'active' : '' }}" href="/home/admin">
+                                <i class="bi bi-house-door"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('admin/member') ? 'active' : '' }}" href="/user">
+                                <i class="bi bi-people"></i> Users
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('admin/book') ? 'active' : '' }}" href="/book">
+                                <i class="bi bi-book"></i> Manage Books
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('admin/librarian') ? 'active' : '' }}" href="/borrowedhistory">
+                                <i class="bi bi-clock-history"></i> Borrow History
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
 
 
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
-            <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="/home/admin">Admin Dashboard</a>
-
-                </div>
-            </nav>
-
-        <!-- Main content -->
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <!-- Top navigation bar -->
-            <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="/home/admin">Admin Dashboard</a>
-                </div>
-            </nav>
-
-            <div class="card mt-0">
+            <div class="card w-100" style="margin-top: 10px;">
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -77,7 +57,7 @@
                     <h2 class="text-center">Books</h2>
                     <a href="/book/create" class="btn btn-primary btn-lg mb-4">Add Book</a>
 
-                    <div class="row">
+                    <div class="row d-flex justify-content-center">
                         @foreach ($books as $book)
                             <div class="col-md-4 mb-4">
                                 <div class="card shadow-sm">
@@ -97,7 +77,9 @@
                             </div>
                         @endforeach
                     </div>
-
+                    <div class="d-flex justify-content-center">
+                        {{ $books->links() }}
+                    </div>
                 </div>
             </div>
 

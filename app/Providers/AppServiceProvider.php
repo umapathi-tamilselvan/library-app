@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,13 +27,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
+        Paginator::useBootstrap();
+
+
         User::created(function ($user) {
-            User::create([
-                'name' => $user->name,
-                'email' => $user->email,
-                'password' => $user->password,
-            ]
-            );
+
+            Log::info('New user created: ' . $user->name);
+
+
         });
     }
 }

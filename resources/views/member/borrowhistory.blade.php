@@ -53,7 +53,7 @@
                 </div>
             </nav>
 
-            <div class="container d-md-block bg-light sidebar shadow-sm">
+            <div class="card container d-md-block bg-light sidebar shadow-sm">
                 <h2 class="text-center">Borrow History</h2>
                 <div class="table-responsive">
                     @if($borrowHistorys->isNotEmpty())

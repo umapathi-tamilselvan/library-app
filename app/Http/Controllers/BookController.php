@@ -9,7 +9,7 @@ class BookController extends Controller
 {
     public function viewbook()
     {
-        $books = Book::get();
+        $books = Book::paginate(6);
 
         return view('admin.book', compact('books'));
     }
